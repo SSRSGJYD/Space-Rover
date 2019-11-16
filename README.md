@@ -57,7 +57,7 @@
     "camera_yaw": -90,
     "camera_zoom": 45,
     "lights": [
-        { // a point light
+        {
             "light_color": {
                 "x": 1,
                 "y": 1,
@@ -70,7 +70,7 @@
             },
             "type": 1
         },
-        { // a parallel light
+        {
             "light_color": {
                 "x": 1,
                 "y": 1,
@@ -84,7 +84,7 @@
             "type": 2 
         }
     ],
-    "models": [ // now only support models from .obj file
+    "models": [
         {
             "ka": {
                 "x": 0.0,
@@ -243,7 +243,7 @@
 | -- mesh.h, model.h, objmodel.h	// data structure for .obj model
 | -- openglscene.h, openglscene.cpp		// opengl rendering pipeline
 | -- paramdialog.h, paramdialog.cpp, paramdialog.ui		// parameter dialog
-| -- raytracingdialog.h, raytracingdialog.cpp, raytracingdialog.ui // ray tracing config 		dialog
+| -- raytracingdialog.h, raytracingdialog.cpp, raytracingdialog.ui // ray tracing config dialog
 | -- raytracingscene.h, raytracingscene.cpp		// ray tracing rendering pipeline
 | -- scene.h, scene.cpp			// abstraction of scene
 | -- stb_image.h				// external library for reading texture
