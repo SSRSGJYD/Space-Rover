@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>shader/phong_shadow_mapping.frag</file>
+        <file>shader/phong_shadow_mapping.vert</file>
+        <file>shader/shadow_mapping_depth.frag</file>
+        <file>shader/shadow_mapping_depth.vert</file>
+        <file>shader/phong_point_shadow.frag</file>
+        <file>shader/phong_point_shadow.vert</file>
+        <file>shader/point_shadow_depth.geom</file>
+        <file>shader/point_shadow_depth.frag</file>
+        <file>shader/point_shadow_depth.vert</file>
+    </qresource>
+</RCC>

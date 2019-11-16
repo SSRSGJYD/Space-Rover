@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1000</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="projectionMenu">
+    <property name="title">
+     <string>投影模式</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="paramMenu">
+    <property name="title">
+     <string>参数设置</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="saveImageMenu">
+    <property name="title">
+     <string>保存渲染图片</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="lightMenu">
+    <property name="title">
+     <string>选择光源</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="shadowMenu">
+    <property name="title">
+     <string>阴影效果</string>
+    </property>
+   </widget>
+   <addaction name="projectionMenu"/>
+   <addaction name="lightMenu"/>
+   <addaction name="paramMenu"/>
+   <addaction name="shadowMenu"/>
+   <addaction name="saveImageMenu"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
