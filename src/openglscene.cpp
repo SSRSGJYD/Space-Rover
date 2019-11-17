@@ -157,7 +157,7 @@ void OpenGLScene::initializeGL(){
             ParallelLight* pLight = (ParallelLight*)scene->lights[i];
             PointLight* light = new PointLight();
             light->m_color = pLight->m_color;
-            light->m_position = -1.0e10f * pLight->m_direction;
+            light->m_position = -1.0e2f * pLight->m_direction;
             pointLightv.push_back(light);
         }
         // configure depth map FBO

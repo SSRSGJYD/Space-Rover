@@ -73,7 +73,7 @@ float ShadowCalculation(vec4 fragPosLightSpace, sampler2D shadowMap, vec3 lightD
 }
 
 // calculates the color when using a directional light.
-vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir)
+vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir, vec4 lightSpaceMatrix, sampler2D shadowMap)
 {
     vec3 lightDir = normalize(-light.direction);
     // diffuse shading
@@ -85,7 +85,13 @@ vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir)
     vec3 ambient = ambientStrength * vec3(texture(texture_diffuse1, fs_in.TexCoords));
     vec3 diffuse = diff * vec3(texture(texture_diffuse1, fs_in.TexCoords));
     vec3 specular = specularStrength * spec * vec3(texture(texture_diffuse1, fs_in.TexCoords));
-    return (ambient + diffuse + specular) * light.color;
+    // shadow
+    float shadow = 0;
+    if(useShadow){
+        shadow = ShadowCalculation(lightSpaceMatrix, shadowMap, lightDir);   
+    }
+    vec3 result = (ambient + (1.0 - shadow) * (diffuse + specular)) * light.color;   
+    return result;
 }
 
 // calculates the color when using a point light.
@@ -106,7 +112,6 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, v
     if(useShadow){
         shadow = ShadowCalculation(lightSpaceMatrix, shadowMap, lightDir);   
     }
-    // shadow = 0.9;
     vec3 result = (ambient + (1.0 - shadow) * (diffuse + specular)) * light.color;   
     return result;
 }
@@ -125,6 +130,15 @@ void main()
             pointLight.color = light.color;
             result += CalcPointLight(pointLight, normal, fs_in.FragPos, viewDir, fs_in.FragPosLightSpace[i], shadowMap[i]);
         }
+        else{
+            DirLight dirLight;
+            dirLight.direction = light.attrib;
+            dirLight.color = light.color;
+            result += CalcDirLight(dirLight, normal, viewDir, fs_in.FragPosLightSpace[i], shadowMap[i]);
+        }
     }
+    result.x = clamp(result.x, 0.0, 1.0);
+    result.y = clamp(result.y, 0.0, 1.0);
+    result.z = clamp(result.z, 0.0, 1.0);
     FragColor = vec4(result, 1.0);
 }
